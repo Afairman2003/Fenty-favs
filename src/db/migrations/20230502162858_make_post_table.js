@@ -9,7 +9,6 @@
         table.foreign('user_id').references('id').inTable('users');
         table.string('url').notNullable();
         table.string('caption').notNullable();
-        table.string('date').notNullable();
         table.timestamps(true, true);
       });
       

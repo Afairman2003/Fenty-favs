@@ -2,12 +2,11 @@ const knex = require('../knex');
 
 class Posts{
 
-    constructor(id, user_id, url, caption, date){
+    constructor(id, user_id, url, caption){
         this.id = id;
         this.user_id = user_id;
         this.url = url;
         this.caption = caption;
-        this.date = date;
     }
 
     static async list() {
@@ -21,7 +20,7 @@ class Posts{
         }
       }
 
-      static async find(id) {
+      static async show(id) {
         try {
           const query = 'SELECT * FROM posts WHERE id = ?';
           const { rows: [posts] } = await knex.raw(query, [id]);
@@ -32,11 +31,11 @@ class Posts{
         }
       }
 
-      static async create( user_id, url, caption, date=null) {
+      static async create(user_id, url, caption) {
       try {
-        const query = `INSERT INTO posts (user_id, url, caption, date)
-          VALUES (?,?,?,?) RETURNING *`;
-        const { rows: [posts] } = await knex.raw(query, [user_id, url, caption, date]);
+        const query = `INSERT INTO posts (user_id, url, caption)
+          VALUES (?,?,?) RETURNING *`;
+        const { rows: [posts] } = await knex.raw(query, [user_id, url, caption]);
         return new Posts(posts);
       } catch (err) {
         console.error(err);
