@@ -1,0 +1,9 @@
+.h1 fw-bold mb-0{
+   font-family: cursive;
+}
+
+.img-fluid{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

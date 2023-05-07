@@ -5,15 +5,22 @@ import {
   setNav,
 } from './global.js';
 
+function loginData() {
+  const username = document.querySelector('#username').value;
+  const password = document.querySelector('#password').value;
+  return { username, password };
+}
+
 const main = async () => {
   const user = await fetchLoggedInUser();
   if (user) return window.location.assign('/user.html');
 
   setNav();
-  document.querySelector('#create-form')
+  document.querySelector('#login-form')
     .addEventListener('submit', async (event) => {
       event.preventDefault();
-      signupAndLoginHandler('/api/users/login', event.target);
+      const formData = loginData();
+      signupAndLoginHandler('/api/users/login', formData);
     });
 };
 
