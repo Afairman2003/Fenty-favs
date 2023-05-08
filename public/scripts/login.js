@@ -16,7 +16,7 @@ const main = async () => {
   if (user) return window.location.assign('/user.html');
 
   setNav();
-  document.querySelector('#login-form')
+  document.querySelector('#create-form')
     .addEventListener('submit', async (event) => {
       event.preventDefault();
       const formData = loginData();

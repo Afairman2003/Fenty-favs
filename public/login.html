@@ -1,28 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/style.css">
-  <link rel="stylesheet" href="./styles/login.css">
-  <script type="module" src="./scripts/login.js"></script>
-  <title>Log in</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="./styles/style.css">
+ <link rel="stylesheet" href="./styles/login.css">
+ <script type="module" src="./scripts/login.js"></script>
+ <title>Log in</title>
 </head>
 
-<body>
-	<div class="form-box">
-		<div class="header-text">
-			Login
-      
-		</div><input placeholder="Username" type="text"> <input placeholder=" Password" type="password"> <span></span> <button>Submit</button>
-    <div>
-      <p class="mb-0">Don't have an account? <a href="./create.html" class="text-white-50 fw-bold" style="color: #01020e;">Sign Up</a>
-      </p>
-    </div>
 
-	</div>
+<body>
+ <nav id="main-nav"></nav>
+ <div class="form-box">
+  <h2>Log in</h2>
   
-</body>
-      
+   <form id="create-form" aria-describedby="log-in">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" autocomplete="username">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" autocomplete="password">
+    <p class="mb-0">Don't have an account? <a href="./create.html" class="text-white-50 fw-bold" style="color: #01020e;">Sign Up</a>
+    </p> 
+
+    <button type="submit">Log in!</button>
+  </form>
+
+
+ </div>
+ </body>
+    
 </html>
+
+
+
+
+
+
+
+
+
+
