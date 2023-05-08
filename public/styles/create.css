@@ -7,3 +7,9 @@
     height: 100%;
     object-fit: cover;
 }
+
+.form-label{
+    font-family:lucida console;
+    font-size: 1.4rem;
+}
+
