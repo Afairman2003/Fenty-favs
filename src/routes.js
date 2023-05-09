@@ -30,6 +30,7 @@ Router.get('/users/:id', userController.show);
 Router.get('/me', userController.showMe);
 Router.get('/posts', postController.list);
 Router.get('/posts/:id', postController.show);
+Router.get('/posts/me', postController.myPosts);
 
 // checkAuthentication middleware is applied to only to this route (and /logged-in-secret)
 Router.get('/logged-in-secret', checkAuthentication, (req, res) => {

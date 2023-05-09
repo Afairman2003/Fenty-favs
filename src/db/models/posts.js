@@ -77,6 +77,19 @@ class Posts{
           return null;
         }
       }
+
+      static async myPosts(id) {
+        console.log(id)
+        try {
+          const query = 'SELECT * FROM posts WHERE id = ?';
+          const { rows: [posts] } = await knex.raw(query, [id]);
+          return posts ? new Posts(posts) : null;
+        } catch (err) {
+          console.error(err);
+          return null;
+        }
+      }
+
 }
 
 module.exports = Posts;
