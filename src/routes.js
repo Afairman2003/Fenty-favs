@@ -1,8 +1,10 @@
 const express = require('express');
 const userController = require('./controllers/user');
 const postController = require('./controllers/post/');
+const likesController = require('./controllers/likes');
 const addModels = require('./middleware/add-models');
 const checkAuthentication = require('./middleware/check-authentication');
+
 
 const Router = express.Router();
 Router.use(addModels);
@@ -19,6 +21,7 @@ Router.get('/cookieCounter', (req, res) => {
 Router.post('/users', userController.create);
 Router.post('/users/login', userController.login);
 Router.post('/posts', postController.create);
+Router.post('/posts/:id/like', checkAuthentication, likesController.create);
 
 
 // Read

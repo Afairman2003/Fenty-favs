@@ -19,21 +19,34 @@ const main = async () => {
     const divElement = document.createElement('div');
     const imgElement = document.createElement('img');
     const captionElement = document.createElement('p');
-    const buttonElement = document.createElement('button');
+    const deleteButton = document.createElement('button');
+    const likesButton = document.createElement('button');
+    likesButton.innerText = 'Like';
+
     divElement.setAttribute('data-post-id', post.id);
-    buttonElement.innerText = 'Delete';
-    buttonElement.id = "delete-post-button";
+    deleteButton.innerText = 'Delete';
+    deleteButton.id = "delete-post-button";
     imgElement.src = url;
     captionElement.innerText = caption;
-    divElement.append(imgElement, captionElement, buttonElement);
+    divElement.append(imgElement, captionElement, deleteButton,likesButton);
     postContainer.append(divElement);
 
-    buttonElement.addEventListener('click', async (e) => {
+    likesButton.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const id = e.target.parentElement.attributes[0].value;
+      console.log(id);
+      const [likes, err] = await handleFetch(`/api/posts/${id}/like`,{ method: 'POST',  credentials: 'include', 
+      headers: { 'Content-Type': 'application/json' },});
+      console.log(likes);
+    })
+    deleteButton.addEventListener('click', async (e) => {
       e.preventDefault();
       const id = e.target.parentElement.attributes[0].value
       const [posts, err] = await handleFetch(`/api/posts/${id}`,{ method: 'DELETE' });
       console.log(posts);
-      displayPost(posts.id);
+      postContainer.removeChild(e.target.parentElement);
+      console.log(e.target.parentElement);
+
     })
   
   }

@@ -46,4 +46,4 @@ class Likes{
       }
 }
 
-module.exports = likes;
+module.exports = Likes;

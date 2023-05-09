@@ -1,12 +1,15 @@
 
 const create = async (req, res) => {
     const {
+        session,
         db: { Likes },
         params: { id },
     } = req;
-    const likes = await Likes.create(id);
+    console.log(Likes)
+    const user_id = session.userId
+    const likes = await Likes.create(user_id, id);
     res.send(likes);
 
 }
-module .exports = create
+module.exports = create
     
